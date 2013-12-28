@@ -1,0 +1,147 @@
+html, body, .site{
+	height: 100%;
+	direction: rtl;
+}
+
+
+
+.site {
+	background: #eaeaea;
+	color: #525252;
+}
+
+
+.container {
+	width: 100%;
+	margin: 0;
+	padding:0;
+}
+
+.login-page .site {
+background: -webkit-gradient(linear, 0 100%, 0 0, from(#a90329), color-stop(0.44, #8f0222), to(#6d0019));
+background: -webkit-linear-gradient(#a90329 0%, #8f0222 44%, #6d0019 100%);
+background: -moz-linear-gradient(#a90329 0%, #8f0222 44%, #6d0019 100%);
+background: -o-linear-gradient(#a90329 0%, #8f0222 44%, #6d0019 100%);
+background: linear-gradient(#a90329 0%, #8f0222 44%, #6d0019 100%);
+}
+
+.login {
+	width: 400px;
+	margin-left: -200px;
+	margin-top: -160px;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	padding: 25px;
+	background: #e5e5e5;
+	background: rgba(255,255,255,0.6);
+	border-radius: 4px;
+
+}
+
+.glyphicon-plus-sign {
+	margin: 0 2px;
+}
+
+
+.greeting {
+	height: 54px;
+	background: #e5e5e5;
+	line-height: 54px;
+}
+
+.dashBox {
+	background: #fff;
+	box-sizing: border-box;
+	padding: 10px;
+	border-radius: 3px;
+    margin:13px 13px 0 13px;
+	border: 1px solid #ccc;
+}
+.inner-content {
+	min-height: 80%;
+	border-radius: 3px;
+}
+
+.tasks-list .item {
+	display: inline-block;
+	min-width: 130px;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 3px 7px;
+}
+
+table td, table th {
+	direction: rtl;
+	text-align: right;
+	color: #525252;
+}
+
+.controls {
+	background: #fff;
+	border-radius: 3px;
+}
+
+.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11 {
+	float:right;
+}
+.nav-pills {
+	padding-right: 10px;
+}
+.nav-pills>li {
+	display: block;
+	float: none;
+	margin-bottom: 5px;
+}
+
+.sidebar {
+	background: #2e2e2e;
+	color: #999;
+	height: 100%;
+}
+
+.sidebar a {
+	color:#999;
+}
+
+.nav-pills>li>a:hover {
+	background: none;
+	color:#d6725e;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	background: #d6725e;
+}
+
+.btn-danger {
+	background: #d6725e;
+}
+
+.form-control {
+	border: 1px solid #ddd;
+}
+.dashBox-title {
+	margin: -10px -10px 10px -10px;
+	padding: 10px 20px;
+	border-bottom: 1px solid #ccc;
+	font-size: 17px;
+
+}
+
+#Mydiv {
+	height: 200px;
+	background: red;
+	width: 50%;
+	box-shadow: inset 12px 21px 172px #000;
+}
+
+.btn-group>.btn, .btn-group-vertical>.btn {
+	float:right;
+}
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+	border-radius: 0 4px 4px 0;
+}
+
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+	border-radius: 4px 0 0 4px;
+}
