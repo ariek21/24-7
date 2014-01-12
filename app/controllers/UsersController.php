@@ -4,6 +4,11 @@ class UsersController extends BaseController {
 
     protected $layout = 'master';
 
+    public function getPageName ()
+	{
+		return 'new-user';
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -11,8 +16,9 @@ class UsersController extends BaseController {
 	 */
 	public function index()
 	{
-		var_dump(User::all());
-        return View::make('users.index');
+
+        return View::make('users.index')
+                     ->with('name', $this->getPageName());
 	}
 
 	/**
@@ -22,7 +28,9 @@ class UsersController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('users.create');
+        return View::make('users.create')
+        		->with('name', $this->getPageName())
+        		->with('users', User::all());
 	}
 
 	/**

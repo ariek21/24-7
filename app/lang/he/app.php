@@ -59,6 +59,25 @@ return array(
 	'category' => 'קטגוריה',
 	'casual' => 'שוטף',
 	'services' => 'שירותים',
+	'address_number' => 'מס׳',
+	'address_number_ph' => '',
+	'city' => 'עיר',
+	'address' => 'כתובת',
+	'address_ph' => '',
+
+	'save' => 'שמירה',
+	'new_client' => 'חדש',
+	'createNewUser' => 'לקוח חדש',
+	'basic_info' => 'בסיסי',
+	'basic_contacts' => 'אנשי קשר',
+	'contract_start' => 'תחילת חוזה',
+	'contract_end' => 'סוף חוזה',
+	'package' => 'חבילה',
+	'dash_tasks_form_title' => 'תקלות',
+	'dash_client_form_title' => 'בניינים / לקוחות',
+	'delete' => 'מחיקה',
+	'edit' => 'עריכה',
+
 
 
 );

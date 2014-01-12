@@ -7,6 +7,20 @@ class User extends Eloquent implements UserInterface{
 
 	public static $rules = array();
 
+    public function role() {
+        return $this->hasOne('Role','id','role_id');
+    }
+
+    public static function isSuperAdmin()
+    {
+        return User::find(Auth::user()->id)->role->title === 'Administrator';
+    }
+
+    public static function isAdmin()
+    {
+        return User::find(Auth::user()->id)->role->title === 'Guest';
+    }
+
 	/**
     * Get the unique identifier for the user.
     *

@@ -27,19 +27,31 @@
                 @if (Auth::check())
                 {{Auth::user()->username}}!
                 @endif</span>
+
                 <nav class="">
                     <ul class="nav nav-pills">
+
                         <li class="{{ $name == 'dashboard' ? 'active' : '' }}">
                           <a href="{{URL::to('dashboard')}}" class="">
                               <i class="glyphicon glyphicon-th"></i>
                               {{trans('app.dashboard')}}
                             </a>
+                        </li>
+
                         <li class="{{ $name == 'tasks' ? 'active' : '' }}">
                             <a href="{{URL::to('dashboard/tasks')}}" class="">
                               <i class="glyphicon glyphicon-tasks"></i>
                               {{trans('app.tasks')}}
                             </a>
                         </li>
+                        @if (User::isSuperAdmin())
+                        <li class="{{ $name == 'clients' ? 'active' : '' }}">
+                          <a href="{{URL::to('dashboard/clients')}}" class="">
+                              <i class="glyphicon glyphicon-th"></i>
+                              {{trans('app.createNewUser')}}
+                            </a>
+                        </li>
+                        @endif
                         <li class="{{ $name == 'reports' ? 'active' : '' }}">
                             <a href="{{URL::to('dashboard/reports')}}" class="">
                               <i class="glyphicon glyphicon-list-alt"></i>
@@ -71,9 +83,46 @@
         <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script>
-            console.log($);
+            var app = {
+                name: '{{trans('app.name')}}',
+                email: '{{trans('app.email')}}',
+                phone: '{{trans('app.phone')}}',
+                desc: '{{trans('app.desc')}}'
+            };
+
             $(document).ready(function(){
                 $('select').selectpicker();
+
+                $('#addContactButton').click(function(){
+                    var buff;
+                    buff = '<div class="form-group row">';
+                        buff += '<div class="col-lg-4">';
+                            buff += '<label for="">' + app.name + '</label>';
+                            buff += '<input type="text" class="form-control" name="contact-name">';
+                        buff += '</div>';
+
+                        buff += '<div class="col-lg-4">';
+                            buff += '<label for="">' + app.email + '</label>';
+                            buff += '<input type="text" class="form-control" name="contact-email">';
+                        buff += '</div>';
+
+                        buff += '<div class="col-lg-4">';
+                            buff += '<label for="">' + app.phone + '</label>';
+                            buff += '<input type="text" class="form-control" name="contact-phone">';
+                        buff += '</div>';
+                    buff += '</div>';
+                    buff += '<div class="form-group row">';
+
+                        buff += '<div class="col-lg-12">';
+                            buff += '<label for="">' + app.desc + '</label>';
+                            buff += '<input type="text" class="form-control" name="contact-desc">';
+                        buff += '</div>';
+                    buff += '</div>';
+
+                    $('#contacts-fields').append(buff);
+
+                    return false;
+                });
             });
         </script>
 
