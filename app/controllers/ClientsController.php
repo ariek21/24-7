@@ -106,14 +106,18 @@ class ClientsController extends BaseController {
         if(is_numeric($id))
 		{
 			$client = Client::find($id);
-			$d = new DateTime($client->contract_start);
-			$client->contract_start = $d->format('Y-m-d');
-			$d = new DateTime($client->contract_end);
-			$client->contract_end = $d->format('Y-m-d');
+			$contacts = Contact::all();
+
+			if (count($client) > 0) {
+				$d = new DateTime($client->contract_start);
+				$client->contract_start = $d->format('Y-m-d');
+				$d = new DateTime($client->contract_end);
+				$client->contract_end = $d->format('Y-m-d');
+			}
 			return View::make('clients.edit')
                ->with('name', $this->getPageName())
         	   ->with('client', $client)
-        	   ->with('contact', '');
+        	   ->with('contacts', $contacts);
         } else {
         	die('no client');
         	return Redirect::to('dashboard/clients');

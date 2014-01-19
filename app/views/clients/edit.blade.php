@@ -101,6 +101,33 @@
 			<div class="col-lg-8">
 				<div class="dashBox">
 					<div id="contacts">
+						<div class="contacts-list">
+							<table class="table">
+								<thead>
+									<th>
+										<td>1</td>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+									</th>
+								</thead>
+								<tbody>
+								@foreach ($contacts as $contact)
+									<tr>
+										<td>{{ $contact->name }}</td>
+										<td>{{ $contact->email }}</td>
+										<td>{{ $contact->address }}</td>
+										<td>{{ $contact->address_number }}</td>
+										<td>{{ $contact->floor }}</td>
+										<td>{{ $contact->apartment_number }}</td>
+									</tr>
+
+								@endforeach
+								</tbody>
+							</table>
+						</div>
 						<div class="form-group row">
 							<div class="col-lg-12">
 								<a class="btn btn-danger btn-small" id="addContactButton" href="{{URL::to('dashboard/client/contact/new')}}">
@@ -110,7 +137,58 @@
 							</div>
 						</div>
 					  	<div id="contacts-fields">
+								<div class="form-group row">
+								  	<div class="col-lg-12">
+									    <label for="contact-start">{{trans('app.contact_name')}}</label>
+									    <input type="text" class="form-control" id="contact-name" name="contact_name" value="">
+									</div>
+								</div>
 
+
+								<div class="form-group row">
+									<div class="col-lg-4">
+									    <label for="contact-phone-1">{{trans('app.contact_phone1')}}</label>
+									    <input type="phone" class="form-control" id="contact-phone-1" name="contact_phone1" value="">
+
+									</div>
+									<div class="col-lg-4">
+									    <label for="contact-phone-2">{{trans('app.contact_phone2')}}</label>
+									    <input type="phone" class="form-control" id="contact-phone-2" name="contact_phone2" value="">
+
+									</div>
+									<div class="col-lg-4">
+									    <label for="contact-phone-3">{{trans('app.contact_phone3')}}</label>
+									    <input type="phone" class="form-control" id="contact-phone-3" name="contact_phone3" value="">
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+								  	<div class="col-lg-8">
+									    <label for="contact-address">{{trans('app.contact_address')}}</label>
+									    <input type="text" class="form-control" id="contact-address" name="contact_address" value="">
+									</div>
+								  	<div class="col-lg-2">
+									    <label for="contact-floor">{{trans('app.floor')}}</label>
+									    <input type="number" class="form-control" id="contact-floor" name="floor" value="">
+									</div>
+
+								    <div class="col-lg-2">
+									    <label for="number-of-apartment">{{trans('app.number_of_apartment')}}</label>
+									    <input type="number" class="form-control" id="number-of-apartment" name="number_of_apartment" value="">
+									</div>
+								</div>
+
+								<div class="form-group row">
+								  	<div class="col-lg-12">
+									    <label for="contact-email">{{trans('app.email')}}</label>
+									    <input type="text" class="form-control" id="contact-email" name="contact_email" value="">
+									</div>
+								</div>
+
+
+
+							</div>
 					  	</div>
 					</div>
 				</div>

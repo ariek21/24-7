@@ -77,6 +77,13 @@ return array(
 	'dash_client_form_title' => 'בניינים / לקוחות',
 	'delete' => 'מחיקה',
 	'edit' => 'עריכה',
+	'contact_name' => 'שם',
+	'contact_phone1' => 'טלפון 1',
+	'contact_phone2' => 'טלפון 2',
+	'contact_phone3' => 'טלפון 3',
+	'contact_address' => 'כתובת',
+	'floor' => 'קומה',
+	'number_of_apartment' => 'מס׳ דירה',
 
 
 

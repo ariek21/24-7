@@ -1,7 +1,7 @@
 <?php
 
-class Client extends Eloquent {
-	protected $table = 'clients';
+class Contact extends Eloquent {
+	protected $table = 'contacts';
 
 	protected $guarded = array();
 
