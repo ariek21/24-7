@@ -22,7 +22,7 @@
       </div>
 	    <div class="site">
 		    <div class="container row">
-		        <div class="sidebar col-lg-2">
+		        <div class="sidebar col-sm-2">
               <span class="greeting">Welcome
                 @if (Auth::check())
                 {{Auth::user()->username}}!
@@ -31,39 +31,39 @@
                 <nav class="">
                     <ul class="nav nav-pills">
 
-                        <li class="{{ $name == 'dashboard' ? 'active' : '' }}">
+                        <li class="{{ $menuParent == 'dashboard' ? 'active' : '' }}">
                           <a href="{{URL::to('dashboard')}}" class="">
                               <i class="glyphicon glyphicon-th"></i>
                               {{trans('app.dashboard')}}
                             </a>
                         </li>
 
-                        <li class="{{ $name == 'tasks' ? 'active' : '' }}">
+                        <li class="{{ $menuParent == 'tasks' ? 'active' : '' }}">
                             <a href="{{URL::to('dashboard/tasks')}}" class="">
                               <i class="glyphicon glyphicon-tasks"></i>
                               {{trans('app.tasks')}}
                             </a>
                         </li>
                         @if (User::isSuperAdmin())
-                        <li class="{{ $name == 'clients' ? 'active' : '' }}">
+                        <li class="{{ $menuParent == 'clients' ? 'active' : '' }}">
                           <a href="{{URL::to('dashboard/clients')}}" class="">
                               <i class="glyphicon glyphicon-th"></i>
-                              {{trans('app.createNewUser')}}
+                              {{trans('app.clients')}}
                             </a>
                         </li>
                         @endif
-                        <li class="{{ $name == 'reports' ? 'active' : '' }}">
+                        <li class="{{ $menuParent == 'reports' ? 'active' : '' }}">
                             <a href="{{URL::to('dashboard/reports')}}" class="">
                               <i class="glyphicon glyphicon-list-alt"></i>
                               {{trans('app.reports')}}
                             </a>
-                        <li class="{{ $name == 'my-account' ? 'active' : '' }}">
+                        <li class="{{ $menuParent == 'my-account' ? 'active' : '' }}">
                             <a href="{{URL::to('dashboard/accounts')}}" class="">
                               <i class="glyphicon glyphicon-user"></i>
                               {{trans('app.my_account')}}
                             </a>
                         </li>
-                        <li class="{{ $name == 'my-account' ? 'active' : '' }}">
+                        <li class="{{ $menuParent == 'my-account' ? 'active' : '' }}">
                             <a href="{{URL::to('logout')}}" class="">
                               <i class="glyphicon glyphicon-user"></i>
                               {{trans('app.log_out')}}
@@ -73,7 +73,7 @@
                 </nav>
 		            @yield('sidebar')
 		        </div>
-		        <div class="content col-lg-10">
+		        <div class="content col-sm-10">
 		            @yield('content')
 		        </div>
 			</div>
@@ -81,7 +81,12 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
+        </script>
+        <script src="{{ asset('js/vendor/underscore.js') }}" ></script>
+        <script src="{{ asset('js/vendor/backbone.js') }}" ></script>
+        <script src="{{ asset('js/main.js') }}" ></script>
         <script>
             var app = {
                 name: '{{trans('app.name')}}',
@@ -96,24 +101,24 @@
                 $('#addContactButton').click(function(){
                     var buff;
                     buff = '<div class="form-group row">';
-                        buff += '<div class="col-lg-4">';
+                        buff += '<div class="col-sm-4">';
                             buff += '<label for="">' + app.name + '</label>';
                             buff += '<input type="text" class="form-control" name="contact-name">';
                         buff += '</div>';
 
-                        buff += '<div class="col-lg-4">';
+                        buff += '<div class="col-sm-4">';
                             buff += '<label for="">' + app.email + '</label>';
                             buff += '<input type="text" class="form-control" name="contact-email">';
                         buff += '</div>';
 
-                        buff += '<div class="col-lg-4">';
+                        buff += '<div class="col-sm-4">';
                             buff += '<label for="">' + app.phone + '</label>';
                             buff += '<input type="text" class="form-control" name="contact-phone">';
                         buff += '</div>';
                     buff += '</div>';
                     buff += '<div class="form-group row">';
 
-                        buff += '<div class="col-lg-12">';
+                        buff += '<div class="col-sm-12">';
                             buff += '<label for="">' + app.desc + '</label>';
                             buff += '<input type="text" class="form-control" name="contact-desc">';
                         buff += '</div>';

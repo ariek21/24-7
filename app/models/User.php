@@ -13,6 +13,9 @@ class User extends Eloquent implements UserInterface{
 
     public static function isSuperAdmin()
     {
+        if (!Auth::user()) {
+            return Redirect::to('login');
+        }
         return User::find(Auth::user()->id)->role->title === 'Administrator';
     }
 

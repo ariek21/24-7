@@ -2,6 +2,8 @@
 
 class DashboardController extends BaseController {
 
+	public $menuParent = 'dashboard';
+
 	public function getPageName ()
 	{
 		return 'dashboard';
@@ -21,10 +23,11 @@ class DashboardController extends BaseController {
 
 		$tasks = Tasks::where('user_id','=',Auth::user()->id)->take(4)->get();
         return View::make('dashboards.index')
-        			 ->with('isSuperAdmin', User::isSuperAdmin())
-        			 ->with('tasks', $tasks)
-        			 ->with('clients', Client::take(4)->get())
-                     ->with('name', $this->getPageName());
+				->with('menuParent', $this->menuParent)
+				->with('isSuperAdmin', User::isSuperAdmin())
+				->with('tasks', $tasks)
+				->with('clients', Client::take(4)->get())
+				->with('name', $this->getPageName());
 	}
 
 }

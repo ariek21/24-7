@@ -3,6 +3,7 @@
 class ClientsController extends BaseController {
 
 	protected $layout = 'master';
+	public $menuParent = 'clients';
 
     public function getPageName ()
 	{
@@ -16,6 +17,8 @@ class ClientsController extends BaseController {
 	 */
 	public function index($orderBy = 'id', $order = 'desc')
 	{
+		$clientsCollection = Client::orderBy($orderBy, $order)->get();
+
 		if ($order == 'desc') {
 			$order = 'asc';
 		} else {
@@ -23,8 +26,9 @@ class ClientsController extends BaseController {
 		}
 
 		return View::make('clients.index')
+			   ->with('menuParent', $this->menuParent)
                ->with('name', $this->getPageName())
-        	   ->with('clients', Client::orderBy($orderBy, $order)->get())
+        	   ->with('clients', $clientsCollection)
         	   ->with('order', $order)
         	   ->with('orderBy', $orderBy);
 	}
@@ -38,8 +42,9 @@ class ClientsController extends BaseController {
 	{
 
         return View::make('clients.create')
-               ->with('name', $this->getPageName())
-        	   ->with('clients', Client::all());
+		        ->with('menuParent', $this->menuParent)
+				->with('name', $this->getPageName())
+				->with('clients', Client::all());
 	}
 
 	/**
@@ -88,9 +93,16 @@ class ClientsController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('clients.show')
-         			->with('name', $this->getPageName())
-        			->with('client', Client::find($id));
+		$client = Client::find($id);
+		$contacts = Contact::where('client_id',$id)->get();
+		$clientUsers = $client->ClientUsers->all();
+        return View::make('clients.edit')
+		        ->with('menuParent', $this->menuParent)
+	               ->with('name', $this->getPageName().'-show')
+	        	   ->with('client', $client)
+	        	   ->with('contacts', $contacts)
+	        	   ->with('clientUsers', $clientUsers)
+        		   ->with('editMode', false);
 
 	}
 
@@ -103,23 +115,31 @@ class ClientsController extends BaseController {
 	public function edit($id)
 	{
 
+
         if(is_numeric($id))
 		{
 			$client = Client::find($id);
-			$contacts = Contact::all();
+			$contacts = Contact::where('client_id',$id)->get();
 
-			if (count($client) > 0) {
+			if ($client && count($client) > 0) {
 				$d = new DateTime($client->contract_start);
 				$client->contract_start = $d->format('Y-m-d');
 				$d = new DateTime($client->contract_end);
 				$client->contract_end = $d->format('Y-m-d');
-			}
-			return View::make('clients.edit')
-               ->with('name', $this->getPageName())
-        	   ->with('client', $client)
-        	   ->with('contacts', $contacts);
+				$clientUsers = $client->ClientUsers->all();
+
+				return View::make('clients.edit')
+					->with('menuParent', $this->menuParent)
+					->with('name', $this->getPageName().'-edit')
+					->with('client', $client)
+					->with('contacts', $contacts)
+					->with('clientUsers', $clientUsers)
+					->with('editMode', true);
+
+        	} else {
+        		return Redirect::to('dashboard');
+        	}
         } else {
-        	die('no client');
         	return Redirect::to('dashboard/clients');
         }
 	}
@@ -160,7 +180,7 @@ class ClientsController extends BaseController {
 
 
 		$client->save();
-		return Redirect::to('dashboard/clients');
+		return Redirect::to('dashboard/client/show/'.$id);
 	}
 
 	/**
@@ -179,9 +199,41 @@ class ClientsController extends BaseController {
 		return Redirect::to('dashboard/clients');
 	}
 
+	// Ajax
 	public function addContact()
 	{
-		die('new contact');
+		$contact = new Contact;
+		$contact->name = Input::get('name');
+		$contact->phone_1 = Input::get('phone_1');
+		$contact->phone_2 = Input::get('phone_2');
+		$contact->phone_3 = Input::get('phone_3');
+		$contact->floor = Input::get('floor');
+		$contact->address = Input::get('address');
+		$contact->apartment_number = Input::get('apartment_number');
+		$contact->email = Input::get('email');
+		$contact->client_id =Input::get('client_id');
+		// @TODO | validate
+
+		$contact->save();
+		die;
+	}
+
+	// Ajax
+	public function editContact($contact_id, $client_id) 
+	{
+		$client = Client::find($client_id);
+		$contact = Contact::find($contact_id);
+		die;
+	}
+
+	public function deleteContact ($id, $client_id) 
+	{
+		if(is_numeric($id))
+		{
+			$contact = Contact::find($id);
+			$contact->delete();
+		}
+		return Redirect::to('dashboard/client/edit/' . $client_id);
 	}
 
 }

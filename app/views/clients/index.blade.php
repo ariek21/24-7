@@ -3,17 +3,21 @@
 
 	@section('content')
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="dashBox">
-					<div class="controls">
-						<a class="btn btn-danger btn-small" href="{{URL::to('dashboard/client/new')}}">
-							<i class="glyphicon glyphicon-plus-sign"></i>{{trans('app.new_client')}}</a>
-					</div>
+			<div class="col-sm-12">
+				<div class="dashBox transparent clearfix">
+						<span class="searchbox">
+							<span class="form-group">
+								<input type="search" name="search" results="5"/>
+							</span>
+						</span>
+						<a class="btn btn-default btn-small align-left" href="{{URL::to('dashboard/client/new')}}">
+							<i class="glyphicon glyphicon-plus-sign"></i>{{trans('app.createNewUser')}}</a>
+						
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-sm-12">
 				<div class="dashBox">
 					<h2 class="dashBox-title">{{trans('app.dash_client_form_title')}}</h2>
 				<div id="clients-ph" class="scrollable">
@@ -43,7 +47,9 @@
 						@foreach ($clients as $client)
 						    <tr class="clients-info editable-row">
 						    	<td class="item">{{ $client->city }}</td>
-						    	<td class="item">{{ $client->address }} {{ $client->address_number }}</td>
+						    	<td class="item">
+						    		<a href="{{ url('dashboard/client/show/'.$client->id)}}">{{ $client->address }} {{ $client->address_number }}</a>
+						    	</td>
 						    	<td class="item">{{ $client->contract_start }}</td>
 						    	<td class="item">{{ $client->contract_end }}</td>
 						    	<td class="item">{{ $client->package }}</td>

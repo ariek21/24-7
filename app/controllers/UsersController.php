@@ -3,6 +3,7 @@
 class UsersController extends BaseController {
 
     protected $layout = 'master';
+    public $parentMenu = 'users';
 
     public function getPageName ()
 	{
@@ -18,6 +19,7 @@ class UsersController extends BaseController {
 	{
 
         return View::make('users.index')
+			        ->with('menuParent', $this->menuParent)
                      ->with('name', $this->getPageName());
 	}
 
@@ -29,6 +31,7 @@ class UsersController extends BaseController {
 	public function create()
 	{
         return View::make('users.create')
+		        ->with('menuParent', $this->menuParent)
         		->with('name', $this->getPageName())
         		->with('users', User::all());
 	}
@@ -51,7 +54,7 @@ class UsersController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('users.show');
+        return View::make('users.show')->with('menuParent', $this->menuParent);
 	}
 
 	/**
@@ -62,7 +65,7 @@ class UsersController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('users.edit');
+        return View::make('users.edit')->with('menuParent', $this->menuParent);
 	}
 
 	/**

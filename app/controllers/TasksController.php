@@ -2,6 +2,8 @@
 
 class TasksController extends BaseController {
 
+	public $menuParent = 'tasks';
+
 	public function getPageName ()
 	{
 		return 'tasks';
@@ -16,6 +18,7 @@ class TasksController extends BaseController {
 	{
 		$tasks = Tasks::where('user_id','=',Auth::user()->id)->get();
         return View::make('tasks.tasks')
+		        ->with('menuParent', $this->menuParent)
                      ->with('tasks', $tasks)
                      ->with('name', $this->getPageName());
 	}

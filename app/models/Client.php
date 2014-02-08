@@ -3,7 +3,7 @@
 class Client extends Eloquent {
 	protected $table = 'clients';
 
-	protected $guarded = array();
-
-	public static $rules = array();
+	public function clientUsers() {
+        return $this->hasMany('ClientUsers');
+    }
 }

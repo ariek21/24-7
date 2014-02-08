@@ -60,11 +60,15 @@ return array(
 	'casual' => 'שוטף',
 	'services' => 'שירותים',
 	'address_number' => 'מס׳',
-	'address_number_ph' => '',
+	'address_number_ph' => 'מס׳ דירה',
 	'city' => 'עיר',
 	'address' => 'כתובת',
 	'address_ph' => '',
+	'clients' => 'לקוחות',
+	'settings' => 'הגדרות',
+	'users' => 'משתמשים',
 
+	'back' => 'חזרה',
 	'save' => 'שמירה',
 	'new_client' => 'חדש',
 	'createNewUser' => 'לקוח חדש',
@@ -74,7 +78,7 @@ return array(
 	'contract_end' => 'סוף חוזה',
 	'package' => 'חבילה',
 	'dash_tasks_form_title' => 'תקלות',
-	'dash_client_form_title' => 'בניינים / לקוחות',
+	'dash_client_form_title' => 'כתובת הנכס',
 	'delete' => 'מחיקה',
 	'edit' => 'עריכה',
 	'contact_name' => 'שם',
@@ -83,7 +87,12 @@ return array(
 	'contact_phone3' => 'טלפון 3',
 	'contact_address' => 'כתובת',
 	'floor' => 'קומה',
+	'number_of_floors' => 'מס׳ קומות',
 	'number_of_apartment' => 'מס׳ דירה',
+	'number_of_apartments' => 'מס׳ דירות',
+	'new_contact' => 'איש קשר חדש',
+	'cancel' => 'בטל',
+	'general_comment' => 'הערות כלליות',
 
 
 

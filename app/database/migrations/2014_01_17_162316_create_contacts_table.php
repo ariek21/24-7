@@ -14,14 +14,15 @@ class CreateContactsTable extends Migration {
 	{
 		Schema::create('contacts', function(Blueprint $table) {
 			$table->increments('id');
+			$table->integer('client_id');
 			$table->string('name');
-			$table->string('address');
-			$table->string('phone_1');
-			$table->string('phone_2');
-			$table->string('phone_3');
-			$table->integer('floor');
-			$table->string('apartment_number');
-			$table->string('email');
+			$table->string('address')->nullable();
+			$table->string('phone_1')->nullable();
+			$table->string('phone_2')->nullable();
+			$table->string('phone_3')->nullable();
+			$table->integer('floor')->nullable();
+			$table->string('apartment_number')->nullable();
+			$table->string('email')->nullable();
 			$table->timestamps();
 		});
 	}

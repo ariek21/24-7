@@ -2,6 +2,8 @@
 
 class BaseController extends Controller {
 
+	public $menuParent = null;
+
 	/**
 	 * Setup the layout used by the controller.
 	 *

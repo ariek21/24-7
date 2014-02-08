@@ -3,17 +3,15 @@
 
 	@section('content')
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="dashBox">
-					<div class="controls">
-						<a class="btn btn-danger btn-small" href="{{URL::to('dashboard/client/new')}}">
+			<div class="col-sm-12">
+				<div class="dashBox transparent clearfix">
+						<a class="btn btn-default btn-small align-left" href="{{URL::to('dashboard/client/new')}}">
 							<i class="glyphicon glyphicon-plus-sign"></i>{{trans('app.new_client')}}</a>
-					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-sm-8">
 				<div class="dashBox">
 					<h2 class="dashBox-title">{{trans('app.dash_tasks_form_title')}}</h2>
 				<div id="tasks-ph">
@@ -48,7 +46,7 @@
 		</div>
 		@if (User::isSuperAdmin())
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-sm-8">
 				<div class="dashBox">
 					<h2 class="dashBox-title">{{trans('app.dash_clients_form_title')}}</h2>
 				<div id="tasks-ph">

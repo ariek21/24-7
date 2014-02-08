@@ -3,7 +3,7 @@
 
 	@section('content')
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-sm-12">
 				<div class="dashBox">
 					<div class="controls">
 						<a class="btn btn-danger btn-small" href="{{URL::to('dashboard/tasks/new')}}">
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-sm-8">
 				<div class="dashBox">
 					<h2 class="dashBox-title">{{trans('app.dash_client_form_title')}}</h2>
 				<div id="users-ph">
