@@ -48,5 +48,16 @@
 				@endif
 			</div>
 		</div>
+		{{-- leonid: adding input field --}}
+		<div class="form-group row">
+		  	<div class="col-sm-12">
+		  		@if ($editMode)
+			    <label for="general-comment">{{trans('app.special_things')}}</label>
+			    <textarea class="form-control" id="special-things" name="special-things">{{$client->things}}</textarea>
+				@else
+					<p>{{trans('app.special_things')}}: <br> {{$client->things}}</p>
+				@endif
+			</div>
+		</div>
 	</div>
 </div>

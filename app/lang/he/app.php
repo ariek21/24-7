@@ -93,6 +93,7 @@ return array(
 	'new_contact' => 'איש קשר חדש',
 	'cancel' => 'בטל',
 	'general_comment' => 'הערות כלליות',
+	'special_things' => 'דברים מיוחדים',
 
 
 
